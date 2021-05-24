@@ -1,0 +1,8 @@
+sudo : required
+language: generic
+services :
+  - docker
+before_install:
+  - docker build -t kalusiva/docker-react -f Dockerfile.dev .
+script :
+  - docker run -e CI=true kalusiva/docker-react yarn test -- --coverage
